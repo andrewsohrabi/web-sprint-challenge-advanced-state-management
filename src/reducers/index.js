@@ -1,7 +1,13 @@
-import { FETCH_SMURF_LOADING, FETCH_SMURF_SUCCESS, FETCH_SMURF_FAIL} from './../actions';
+import { FETCH_SMURF_LOADING, FETCH_SMURF_SUCCESS, FETCH_SMURF_FAIL, ADD_SMURF, SET_ERROR} from './../actions';
 
 export const initialState = {
-    smurfs: [],
+    smurfs: [{
+        id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
+        name:'Poppa Smurf',
+        position:'Village Leader',
+        nickname: 'Pops',
+        description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
+    }],
     isLoading: false,
     error: "",
 }
@@ -28,12 +34,24 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false
             });
         
-        case('ADD_SMURF'):
-        // const newSmurf
+        case(ADD_SMURF):
+            const newSmurf = {
+                name: state.name,
+                position: state.position,
+                nickname: state.nickname,
+                description: state.description,
+            }
+            console.log('newSmurf inside reducer:',newSmurf)
             return({
                 ...state,
                 isLoading: false,
-                smurfs: [...state.smurfs ] // need to add new smurf details
+                smurfs: [...state.smurfs, newSmurf ] // need to add new smurf details
+            })
+
+        case(SET_ERROR):
+            return({
+                ...state,
+                error: 'you have an error'
             })
 
         default:
