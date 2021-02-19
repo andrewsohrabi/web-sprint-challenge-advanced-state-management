@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 const AddForm = (props) => {
     const [state, setState] = useState({
+        //id: Date.now(),
         name:"",
         position:"",
         nickname:"",
@@ -22,7 +23,7 @@ const AddForm = (props) => {
         const newSmurf = state;
         console.log('newSmurf', newSmurf);
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.errorMessage = props.setError('Name, Position and Nickname fields are required.'); // DOES NOT WORK ? 
+            props.setError('Name, Position and Nickname fields are required.'); // DOES NOT WORK ? 
         } else {
             console.log('addSmurf')
             props.addSmurf(newSmurf); // when i click it only adds undefined properties to the new smurf?

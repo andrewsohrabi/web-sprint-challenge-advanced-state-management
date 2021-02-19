@@ -15,7 +15,7 @@ export const fetchSmurfs = () => dispatch => {
             dispatch(fetchSmurfSuccess(res.data));
         })
         .catch(err=>{
-            dispatch(fetchSmurfFail(err.Response.code));
+            dispatch(fetchSmurfFail(err));
         });
 }
 
