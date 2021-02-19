@@ -11,7 +11,7 @@ const AddForm = (props) => {
     });
 
     const handleChange = e => {
-        setState({
+        setState({ ...state,
             [e.target.name]:e.target.value
         });
     }
@@ -22,14 +22,20 @@ const AddForm = (props) => {
         const newSmurf = state;
         console.log('newSmurf', newSmurf);
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.errorMessage = props.setError(); // DOES NOT WORK ? 
+            props.errorMessage = props.setError('Name, Position and Nickname fields are required.'); // DOES NOT WORK ? 
         } else {
             console.log('addSmurf')
             props.addSmurf(newSmurf); // when i click it only adds undefined properties to the new smurf?
+            setState({
+                name:"",
+                position:"",
+                nickname:"",
+                description:""
+                });
         }
     }
 
-    //const errorMessage = "";
+    const errorMessage = props.errorMessage;
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -51,7 +57,7 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                props.errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
+                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
             }
             <button>Submit Smurf</button>
         </form>
