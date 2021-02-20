@@ -9,7 +9,6 @@ export const initialState = {
         description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
     }],
     isLoading: false,
-    //fetchError: '',
     error: "",
 }
 
@@ -40,20 +39,6 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 smurfs: [...state.smurfs, action.payload]
             });
-
-            ////// 
-            // const newSmurf = {
-            //     name: action.payload.name,
-            //     position: action.payload.position,
-            //     nickname: action.payload.nickname,
-            //     description: action.payload.description,
-            // }
-            // console.log('newSmurf inside reducer:',newSmurf)
-            // return({
-            //     ...state,
-            //     isLoading: false,
-            //     smurfs: [...state.smurfs, newSmurf ] // need to add new smurf details
-            // })
 
         case(SET_ERROR):
             return({

@@ -17,13 +17,12 @@ const AddForm = (props) => {
         });
     }
 
-    // NEEDS WORK
     const handleSubmit = e => {
         e.preventDefault();
         const newSmurf = state;
         console.log('newSmurf', newSmurf);
         if (state.name === "" || state.position === "" || state.nickname === "") {
-            props.setError('Name, Position and Nickname fields are required.'); // DOES NOT SET ERROR ? 
+            props.setError('Name, Position and Nickname fields are required.');
         } else {
             console.log('addSmurf')
             props.addSmurf(newSmurf);
@@ -35,8 +34,7 @@ const AddForm = (props) => {
                 });
         }
     }
-
-    const errorMessage = props.errorMessage;
+    const errorMessage = props.error;
 
     return(<section>
         <h2>Add Smurf</h2>
