@@ -34,7 +34,8 @@ const AddForm = (props) => {
                 });
         }
     }
-    const errorMessage = props.error;
+    // const errorMessage = "";
+    console.log('error', props.error);
 
     return(<section>
         <h2>Add Smurf</h2>
@@ -56,7 +57,7 @@ const AddForm = (props) => {
                 <textarea onChange={handleChange} value={state.description} name="description" id="description" />
             </div>
             {
-                errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
+                props.error && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.error}</div>
             }
             <button>Submit Smurf</button>
         </form>
@@ -65,7 +66,7 @@ const AddForm = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        errorMessage: state.error
+        error: state.error
     }
 }
 
